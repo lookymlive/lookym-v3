@@ -6,10 +6,10 @@ interface VideoGridProps {
 
 const VideoGrid: FC<VideoGridProps> = ({ session }) => {
   const videos = [
-    { id: 1, title: "Video de ropa", category: "Ropa", url: "/path/to/video1" },
-    { id: 2, title: "Video de zapatos", category: "Zapatos", url: "/path/to/video2" },
+    { id: 1, title: "Video de ropa", category: "Ropa", url: "https://res.cloudinary.com/dhnkojapo/video/upload/v1730321490/samples/dance-2.mp4" },
+    { id: 2, title: "Video de zapatos", category: "Zapatos", url: "https://res.cloudinary.com/dhnkojapo/video/upload/v1730321490/samples/cld-sample-video.mp4" },
     // Agrega más videos de ejemplo aquí
-  ];
+  ]
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 w-full max-w-6xl">

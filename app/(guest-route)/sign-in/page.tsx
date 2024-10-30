@@ -50,6 +50,7 @@ const SignIn: FC<Props> = () => {
       <Input 
         placeholder="lookym@gmail.com" 
         name="email" 
+        type="email"
         value={email} 
         onChange={(e) => setEmail(e.target.value)} 
         aria-label="Email"
