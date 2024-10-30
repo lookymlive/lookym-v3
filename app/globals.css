@@ -33,5 +33,20 @@ body {
   }
   button {
     @apply transition-all ease-in-out duration-300;
-}
+  }
+ .grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 20px;
+ }
+ 
+ .celular {
+   grid-column: 1;
+ }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }

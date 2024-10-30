@@ -18,7 +18,7 @@ const Navbar: FC<Props> = async () => {
     <NextUINav shouldHideOnScroll>
       <NavbarBrand>
         <Link href="/" className="font-bold text-inherit">
-          Auth Practice
+          Lookym App
         </Link>
       </NavbarBrand>
 
