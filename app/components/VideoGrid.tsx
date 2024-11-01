@@ -18,14 +18,7 @@ interface Video {
 
 const VideoGrid: FC<VideoGridProps> = ({ session }) => {
   const videos: Video[] = [
-    {
-      id: 1,
-      title: "Video de ropa",
-      category: "Ropa",
-      url: "https://res.cloudinary.com/dhnkojapo/video/upload/v1730321490/samples/dance-2.mp4",
-      comments: "Ropa de alta calidad",
-      store: { name: "De ropa", address: "Calle 123, Ciudad Rosario" },
-    },
+   
     {
       id: 2,
       title: "Video de zapatos",
@@ -50,22 +43,8 @@ const VideoGrid: FC<VideoGridProps> = ({ session }) => {
       comments: "Accesorios de moda",
       store: { name: "De accesorios", address: "Calle 1011, Ciudad" },
     },
-    {
-      id: 5,
-      title: "Video de ropa",
-      category: "Ropa",
-      url: "https://res.cloudinary.com/dhnkojapo/video/upload/v1730321490/samples/cld-sample-video.mp4",
-      comments: "Este es un video de ropa de alta calidad",
-      store: { name: "De ropa", address: "Calle 123, Ciudad" },
-    },
-    {
-      id: 6,
-      title: "Video de zapatos",
-      category: "Zapatos",
-      url: "https://res.cloudinary.com/dhnkojapo/video/upload/v1730321490/samples/cld-sample-video.mp4",
-      comments: "Este es un video de zapatos de moda",
-      store: { name: "De zapatos", address: "Calle 456, Ciudad" },
-    },
+    
+   
   ];
 
   return (
