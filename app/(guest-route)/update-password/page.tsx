@@ -10,7 +10,7 @@ interface Props {
   searchParams: {
     token: string;
     userId: string;
-  };
+  } & Promise<any>;
 }
 
 const UpdatePassword: FC<Props> = async ({ searchParams }) => {
