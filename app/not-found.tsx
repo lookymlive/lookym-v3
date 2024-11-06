@@ -1,14 +1,29 @@
-
-
-import { FC } from 'react';
-import Image from 'next/image';
+import { FC } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Error404: FC = () => {
   return (
-    <div className='text-center justify-center '>
-      <h1 className='text-4xl font-extrabold text-li dark:text-white'>Error 404: Página no encontrada</h1>
-      <Image src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Z5NHI3b3N6bWJpbTE0d3hlZm1zc3k3NHNlcXgwaGl1NjR1Z3VleSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2vs70gBAfQXvOOYsBI/giphy.gif" alt="Confused Travolta" width={400} height={300} />
-      <p className='text-center font-extrabold text-lime-400      '>Lo sentimos, la página que estás buscando no existe.</p>
+    <div className="text-center justify-center ">
+      <h1 className="mt-2 _text-4xl _font-bold _tracking-tight _text-slate-900 dark:_text-slate-100">
+        Error 404: Página no encontrada
+      </h1>
+        <p className=" text-center justify-center text-2xl font-extrabold text-lime-400">
+        Lo sentimos, la página que estás buscando no existe.
+      </p>
+      <br />
+      
+      <button className="text-2xl font-extrabold text-blue-400 justify-center">
+        <Link href="/">Volver al inicio </Link>
+      </button>
+      <Image
+        src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Z5NHI3b3N6bWJpbTE0d3hlZm1zc3k3NHNlcXgwaGl1NjR1Z3VleSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2vs70gBAfQXvOOYsBI/giphy.gif"
+        alt="Confused Travolta"
+        width={768}
+        height={326}
+        className="mx-auto my-32 rounded-md"
+        loading="lazy"
+       />
     </div>
   );
 };
