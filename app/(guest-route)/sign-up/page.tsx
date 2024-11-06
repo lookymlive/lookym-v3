@@ -3,8 +3,8 @@
 import { FC, useState } from "react";
 import { Input } from "@nextui-org/react";
 import AuthForm from "@/app/components/AuthForm";
-import { continueWithCredentials } from "@/app/actions/auth";
 import { useActionState } from 'react';
+import { continueWithCredentials } from "@/app/actions/auth";
 
 interface Props {}
 
@@ -57,34 +57,39 @@ const SignUp: FC<Props> = () => {
     >
       {/* Input for name */}
       <Input
+        name="name"
+        id="name"
+        type="text"
         value={name}
+        placeholder="Luis Paulo"
         onChange={(e) => setName(e.target.value)}
         errorMessage={state.errors?.name?.join(", ")}
         isInvalid={state.errors?.name ? true : false}
-        placeholder="Luis Paulo"
-        name="name"
         aria-label="Name"
       />
       {/* Input for email */}
       <Input
+        name="email"
+        id="email"
+        type="email"
         value={email}
+        aria-label="Email"
+        placeholder="lookym@gmail.com"
         onChange={(e) => setEmail(e.target.value)}
         errorMessage={state.errors?.email?.join(", ")}
         isInvalid={state.errors?.email ? true : false}
-        placeholder="lookym@gmail.com"
-        name="email"
-        aria-label="Email"
       />
       {/* Input for password */}
       <Input
+        name="password"
+        id="password"
+        type="password"
         value={password}
+        aria-label="Password"
+        placeholder="********"
         onChange={(e) => setPassword(e.target.value)}
         errorMessage={state.errors?.password?.join(", ")}
         isInvalid={state.errors?.password ? true : false}
-        placeholder="********"
-        type="password"
-        name="password"
-        aria-label="Password"
       />
     </AuthForm>
   );

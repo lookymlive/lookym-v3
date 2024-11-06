@@ -12,6 +12,7 @@ interface BaseUserDoc {
     url: string;
   };
   verified: boolean;
+  role: "user" | "store";  // Nuevo campo de rol
 }
 
 export interface CredentialsUserDoc extends BaseUserDoc {
@@ -49,6 +50,12 @@ const schema = new Schema<BaseUserDoc, {}, Methods>(
       enum: ["google", "credentials"],
       required: true,
     },
+    role: {
+      type: String,
+      enum: ["user", "store"],  // Configuración de roles
+      default: "user",
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -81,4 +88,3 @@ export const createNewUser = async (userInfo: UserDoc) => {
 
 const UserModel = models.User || model<BaseUserDoc, Model<BaseUserDoc, {}, Methods>>("User", schema);
 export default UserModel;
-

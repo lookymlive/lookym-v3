@@ -4,6 +4,7 @@ import CategoryFilter from "@/app/components/CategoryFilter";
 import VideoGrid from "@/app/components/VideoGrid";
 import UserComments from "@/app/components/UserComments";
 
+
 interface Props {}
 
 const Home: FC<Props> = async () => {
@@ -16,7 +17,7 @@ const Home: FC<Props> = async () => {
           Welcome to Lookym
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
-          Discover the latest shop displays, trends, and more!
+          Discover the latest shop displays!
         </p>
       </div>
 

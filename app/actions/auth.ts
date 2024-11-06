@@ -1,10 +1,10 @@
 "use server";
-import { z } from "zod";
-import crypto from "crypto";
-import nodemailer from "nodemailer";
-import startDb from "@/app/lib/db";
-import UserModel, { createNewUser } from "@/app/models/user";
-import VerificationTokenModel from "@/app/models/verificationToken";
+import { z } from "zod"; 
+import crypto from "crypto"; // For generating random tokens
+import nodemailer from "nodemailer"; 
+import startDb from "@/app/lib/db";  
+import UserModel, { createNewUser } from "@/app/models/user";  
+import VerificationTokenModel from "@/app/models/verificationToken"; 
 import {
   passwordValidationSchema,
   signInSchema,
@@ -76,6 +76,7 @@ export const signUp = async (
     password,
     provider: "credentials",
     verified: false,
+    role: "user",
   });
 
   // send verification email

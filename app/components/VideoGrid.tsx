@@ -16,7 +16,7 @@ interface Video {
   };
 }
 
-const VideoGrid: FC<VideoGridProps> = ({ session }) => {
+const VideoGrid: FC<VideoGridProps> = ({  }) => {
   const videos: Video[] = [
    
     {
@@ -35,14 +35,7 @@ const VideoGrid: FC<VideoGridProps> = ({ session }) => {
       comments: "Relojes de alta calidad",
       store: { name: "De relojes", address: "Calle 789, Ciudad" },
     },
-    {
-      id: 4,
-      title: "Video de accesorios",
-      category: "Accesorios",
-      url: "https://res.cloudinary.com/dhnkojapo/video/upload/v1730321490/samples/cld-sample-video.mp4",
-      comments: "Accesorios de moda",
-      store: { name: "De accesorios", address: "Calle 1011, Ciudad" },
-    },
+   
     
    
   ];
