@@ -1,4 +1,4 @@
-import Error404 from "@/app/(guest-route)/error404/page";
+
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { FC, ReactNode } from "react";
@@ -17,7 +17,8 @@ const GuestLayout: FC<Props> = async ({ children }) => {
   } catch (error) {
     if (error instanceof Error) {
       if ('statusCode' in error && error.statusCode === 404) {
-        return <Error404 />;
+        // Redirigir a una página de error o mostrar un mensaje de error
+        return redirect("/not-found");
       } else {
         console.error("Error in authentication:", error);
         // Redirigir a una página de error o mostrar un mensaje de error
