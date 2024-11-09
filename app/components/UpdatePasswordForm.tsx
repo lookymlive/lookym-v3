@@ -29,10 +29,13 @@ const UpdatePasswordForm: FC<Props> = ({ userId, token }) => {
     
     setPasswordMatchError(false);
     setLoading(true);
-
+    const formData = new FormData();
+    formData.append('password', password);
+    formData.append('token', token);
+    formData.append('userId', userId);
+    
     try {
-      // Llamamos a la acción de actualizar contraseña con los datos
-      await updatePassword({ password, token, userId });
+      await updatePassword({}, formData);
       setSuccess(true);
       setError(null);
     } catch (err: any) {
@@ -54,6 +57,7 @@ const UpdatePasswordForm: FC<Props> = ({ userId, token }) => {
 
         <Input
           name="password"
+          id="password"
           type="password"
           placeholder="********"
           label="Nueva Contraseña"
@@ -62,6 +66,7 @@ const UpdatePasswordForm: FC<Props> = ({ userId, token }) => {
         />
         <Input
           name="confirmPassword"
+          id="confirmPassword"
           type="password"
           placeholder="********"
           label="Confirmar Contraseña"

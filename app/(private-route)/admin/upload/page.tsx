@@ -36,9 +36,9 @@ export default function UploadVideo() {
         console.error('Upload failed:', error)
         alert('Error al subir el video. Por favor, intenta de nuevo.')
       }
-    } catch (error) {
-      console.error('Error:', error)
-      alert('Error al subir el video. Por favor, intenta de nuevo.')
+    } catch (error: unknown) {
+      console.error('Error:', error);
+      alert('Error al subir el video. Por favor, intenta de nuevo.');
     } finally {
       setUploading(false)
     }
@@ -61,6 +61,7 @@ export default function UploadVideo() {
           <input
             type="text"
             id="title"
+            name='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700 dark:border-gray-600"
@@ -82,6 +83,7 @@ export default function UploadVideo() {
           <input
             type="file"
             id="video"
+            name="video"
             accept="video/*"
             onChange={(e) => setFile(e.target.files?.[0] || null)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-700 dark:border-gray-600"

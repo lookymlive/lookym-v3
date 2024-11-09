@@ -21,12 +21,14 @@ const EditProfile: FC<Props> = () => {
         {/* Campo para cambiar el nombre */}
         <Input
           name="name"
+          type="text"
+          id="name"
           placeholder={session?.user?.name || "New Name"} // Muestra el nombre actual del usuario como placeholder
           label="Name"
         />
 
         {/* Campo para actualizar la foto de perfil */}
-        <Input type="file" name="avatar" accept="image/*" />
+        <Input type="file"  id="avatar" name="avatar" accept="image/*" />
 
         {/* Botón para actualizar el perfil */}
         <AuthSubmitButton label="Update Profile" />

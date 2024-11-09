@@ -1,6 +1,5 @@
-'use client'
-
-import { FC, useState } from "react";
+  "use client";
+  import { FC, useState } from "react";
 import {
   Navbar as NextUINav,
   NavbarBrand,
@@ -69,6 +68,7 @@ const Navbar: FC = () => {
             <Link
               className="w-full"
               href={item.href}
+             
             >
               {item.name}
             </Link>
@@ -94,17 +94,16 @@ const Navbar: FC = () => {
               />
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="user-info" className="h-14 gap-2">
-                <p className="font-semibold">Signed in as</p>
+              <DropdownItem key="user-info" className="h-14 gap-2" textValue={`${session.user.email} - Signed in as`}>
                 <p className="font-semibold">{session.user.email}</p>
               </DropdownItem>
-              <DropdownItem key="edit-profile" startContent={<Settings size={20} />}>
+              <DropdownItem key="edit-profile" startContent={<Settings size={20} />} textValue="Edit Profile">
                 <Link href="/edit-profile">Edit Profile</Link>
               </DropdownItem>
-              <DropdownItem key="view-profile" startContent={<User size={20} />}>
+              <DropdownItem key="view-profile" startContent={<User size={20} />} textValue="My Profile">
                 <Link href="/profile">My Profile</Link>
               </DropdownItem>
-              <DropdownItem key="logout" color="danger" startContent={<LogOut size={20} />}>
+              <DropdownItem key="logout" color="danger" startContent={<LogOut size={20} />} textValue="Log Out">
                 <button onClick={handleSignOut}>Log Out</button>
               </DropdownItem>
             </DropdownMenu>
@@ -115,7 +114,7 @@ const Navbar: FC = () => {
               <Link href="/sign-in">Login</Link>
             </NavbarItem>
             <NavbarItem>
-              <Button as={Link} color="primary" href="/sign-up" variant="flat">
+              <Button as={Link} color="primary" href="/sign-up" variant="flat" >
                 Sign Up
               </Button>
             </NavbarItem>
@@ -125,7 +124,8 @@ const Navbar: FC = () => {
 
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item.name}-${index}`}>
+          <NavbarMenuItem key={`${item.name}-${index}`} >
+            <span data-testid="text-value">{item.name}</span>
             <Link
               className="w-full text-foreground"
               href={item.href}

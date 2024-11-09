@@ -14,4 +14,16 @@ const userSchema = new Schema({
 
 const UserModel = models.User || model("User", userSchema);
 
+async function createNewUser(data: any) {
+  try {
+    const newUser = new UserModel(data);
+    await newUser.save();
+    return newUser;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+export { createNewUser };
 export default UserModel;

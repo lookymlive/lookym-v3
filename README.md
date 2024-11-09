@@ -58,7 +58,7 @@
 └── tsconfig.json                      # Configuración de TypeScript
 ├── public                             # Carpetas publicas
 │   └── favicon.ico                    # Favicon de la aplicación
-├── auth.ts                            # Archivo de autenticación (exportacion de funciones)
+├── auth.ts                            # Definición de tipos relacionados con la autenticación, como el usuario y las credenciales.
 ├── middleware.ts                      # Middleware de NextAuth 
 ├── next.config.mjs                    # Configuración de Next.js 
 ├── package-lock.json                  # Archivo de configuración de paquetes de Next.js 
@@ -66,4 +66,4 @@
 ├── postcss.config.cjs                 # Configuración de PostCSS 
 ├── README.md                          # README de la aplicación 
 ├── tailwind.config.ts                 # Configuración de Tailwind CSS 
-├── tsconfig.json                      # Configuración de TypeScript 
+├── tsconfig.json                      # Este archivo contiene la configuración del compilador de TypeScript, definiendo opciones como el objetivo de compilación, la resolución de módulos, etc.

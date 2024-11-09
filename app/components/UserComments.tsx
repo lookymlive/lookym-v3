@@ -23,6 +23,8 @@ const UserComments: FC = () => {
         ))}
         <div className="flex items-center mt-4">
           <input
+            id="comment"
+            name="comment"
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}

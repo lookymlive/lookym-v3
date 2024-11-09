@@ -13,6 +13,7 @@ const ForgetPassword: FC<Props> = () => {
 
   return (
     <AuthForm
+       
       action={action}
       error={state.error}
       message={state.message}
