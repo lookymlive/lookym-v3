@@ -7,6 +7,23 @@ body,
 :root {
   height: 100%;
 }
+/* globals.css */
+
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+body.dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 
 @layer base {
   :root {
