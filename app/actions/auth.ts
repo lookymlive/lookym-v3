@@ -42,6 +42,10 @@ const signUpSchema = z.object({
   name: z.string().trim().min(3, "Invalid name!"),
   email: z.string().email("Invalid email!"),
   password: z.string().min(8, "Password is too short!"),
+  role: z.enum(['user', 'store']).default('user'),
+  storeName: z.string().optional(),
+  storeType: z.enum(['clothing', 'shoes', 'other']).optional(),
+  description: z.string().optional(),
 });
 
 interface AuthResponse {
@@ -58,26 +62,40 @@ export const signUp = async (
     name: data.get("name"),
     email: data.get("email"),
     password: data.get("password"),
+    role: data.get("role"),
+    storeName: data.get("storeName"),
+    storeType: data.get("storeType"),
+    description: data.get("description"),
   });
+
   if (!result.success) {
-    // Show error to the users
     return { success: false, errors: result.error.formErrors.fieldErrors };
   }
 
-  const { email, name, password } = result.data;
+  const { email, name, password, role, storeName, storeType, description } = result.data;
 
   await startDb();
   const oldUser = await UserModel.findOne({ email });
   if (oldUser) return { success: false, error: "User already exists!" };
 
-  const user = await createNewUser({
+  const userData: any = {
     name,
     email,
     password,
+    role,
     provider: "credentials",
     verified: false,
-    role: "user",
-  });
+  };
+
+  if (role === 'store') {
+    userData.storeDetails = {
+      storeName,
+      storeType,
+      description,
+    };
+  }
+
+  const user = await createNewUser(userData);
 
   // send verification email
   await handleVerificationToken({ email, id: user._id, name });

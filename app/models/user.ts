@@ -9,6 +9,12 @@ interface IUser {
   verified: boolean;
   avatar?: { url: string };
   provider: string;
+  approvalStatus?: 'pending' | 'approved' | 'rejected';
+  storeDetails?: {
+    storeName?: string;
+    storeType?: 'clothing' | 'shoes' | 'other';
+    description?: string;
+  };
 }
 
 interface IUserMethods {
@@ -25,6 +31,19 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   verified: { type: Boolean, default: false },
   avatar: { type: Object },
   provider: { type: String, default: "credentials" },
+  approvalStatus: { 
+    type: String, 
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'approved' 
+  },
+  storeDetails: {
+    storeName: { type: String },
+    storeType: { 
+      type: String,
+      enum: ['clothing', 'shoes', 'other']
+    },
+    description: { type: String }
+  }
 }, {
   timestamps: true
 });
@@ -35,6 +54,12 @@ userSchema.pre('save', function(next) {
     const salt = genSaltSync(10);
     this.password = hashSync(this.password || '', salt);
   }
+  
+  // Set approvalStatus based on role
+  if (this.isModified('role')) {
+    this.approvalStatus = this.role === 'store' ? 'pending' : 'approved';
+  }
+  
   next();
 });
 
