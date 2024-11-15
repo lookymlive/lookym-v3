@@ -1,15 +1,35 @@
 // middleware.ts
-import { NextResponse } from "next/server";
 import { auth } from "@/auth";
+import { NextResponse } from "next/server";
+import type { NextRequest } from 'next/server';
 
-export default auth(async (req) => {
-  const session = await auth()
-  if (!session && req.nextUrl.pathname.startsWith("/(private-route)")) { // Asegúrate de usar el nombre de ruta correcto
-    return NextResponse.redirect(new URL("/(guest-route)/sign-in", req.url)); // Redirige al login
+export default async function middleware(request: NextRequest) {
+  try {
+    const session = await auth();
+    const pathname = new URL(request.url).pathname;
+
+    // If not authenticated and trying to access protected routes
+    if (!session && (pathname.startsWith('/admin') || pathname.startsWith('/store') || pathname.startsWith('/profile'))) {
+      return NextResponse.redirect(new URL('/sign-in', request.url));
+    }
+
+    // Admin routes protection
+    if (pathname.startsWith('/admin') && session?.user.role !== 'admin') {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+
+    // Store routes protection
+    if (pathname.startsWith('/store') && !['store', 'admin'].includes(session?.user.role || '')) {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+
+    return NextResponse.next();
+  } catch (error) {
+    console.error('Middleware error:', error);
+    return NextResponse.redirect(new URL('/sign-in', request.url));
   }
-  return NextResponse.next();
-});
+}
 
 export const config = {
-  matcher: ["/(private-route)/(.*)"], // Solo aplica el middleware a las rutas dentro de (private-route)
-};
+  matcher: ['/admin/:path*', '/store/:path*', '/profile/:path*']
+}

@@ -1,12 +1,17 @@
 import mongoose from "mongoose";
 
+let isConnected = false;
+
 const startDb = async () => {
+  if (isConnected) return;
+
   const url = process.env.MONGO_URI;
   if (!url) throw new Error("Missing environment variable 'MONGO_URI'");
 
   try {
-    if (mongoose.connection.readyState === 0) { // 0 significa desconectado
+    if (mongoose.connection.readyState === 0) {
       await mongoose.connect(url);
+      isConnected = true;
       console.log("Connected successfully to MongoDB");
     }
   } catch (error) {
@@ -14,14 +19,5 @@ const startDb = async () => {
     throw new Error(`MongoDB connection error: ${(error as Error).message}`);
   }
 };
-
-// Cerrar la conexión al cerrar el servidor, solo para entornos de desarrollo
-if (process.env.NODE_ENV === "development") {
-  process.on("SIGINT", async () => {
-    await mongoose.connection.close();
-    console.log("MongoDB connection closed due to app termination");
-    process.exit(0);
-  });
-}
 
 export default startDb;

@@ -61,7 +61,7 @@ const SignUp: FC<Props> = () => {
         id="name"
         type="text"
         value={name}
-        placeholder="Luis Paulo"
+        placeholder="Ingrese su Nombre"
         onChange={(e) => setName(e.target.value)}
         errorMessage={state.errors?.name?.join(", ")}
         isInvalid={state.errors?.name ? true : false}
@@ -74,7 +74,7 @@ const SignUp: FC<Props> = () => {
         type="email"
         value={email}
         aria-label="Email"
-        placeholder="lookym@gmail.com"
+        placeholder="Ingrese su email"
         onChange={(e) => setEmail(e.target.value)}
         errorMessage={state.errors?.email?.join(", ")}
         isInvalid={state.errors?.email ? true : false}

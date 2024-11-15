@@ -13,7 +13,7 @@ export interface SessionUserProfile {
   email: string;
   avatar?: string;
   verified: boolean;
-  role: "user" | "store";
+  role: "user" | "store" | "admin";
   emailVerified?: Date | null;
 }
 
@@ -58,7 +58,7 @@ export const {
           name: user.name,
           verified: user.verified || false,
           avatar: user.avatar?.url || "default-avatar-url",
-          role: user.role as "user" | "store",
+          role: user.role as "user" | "store" | "admin",
           emailVerified: user.emailVerified || null,
         };
       },
@@ -140,7 +140,7 @@ export const {
         name: token.name as string,
         verified: token.verified as boolean,
         avatar: token.avatar as string,
-        role: token.role as "user" | "store",
+        role: token.role as "user" | "store" | "admin",
         emailVerified: token.emailVerified as Date | null,
       };
 
